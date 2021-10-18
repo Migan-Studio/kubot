@@ -1,9 +1,10 @@
 import dotenv from 'dotenv'
-dotenv.config()
 import { Client, Intents, IntentsString } from 'discord.js'
 import { Command } from 'discommand'
 import Dokdo from 'dokdo'
 import path = require('path')
+import { Slash } from 'discommand-slash'
+dotenv.config()
 
 const client = new Client({
   intents: Object.keys(Intents.FLAGS) as IntentsString[],
@@ -13,13 +14,17 @@ const cmd = new Command(client, {
   path: path.join(__dirname, 'commands'),
   loadType: 'FOLDER',
 })
+const slash = new Slash(client, {
+  loadType: 'FOLDER',
+  path: path.join(__dirname, 'slashCommands'),
+})
 const DokdoHandler = new Dokdo(client, {
   prefix: cmd.prefix,
   noPerm: msg => {
     msg.react('❌')
-    msg.reply('어라? 당신은 개발자가 아닌데요?')
+    msg.reply('어라...? 일단 권한이...')
   },
-  globalVariable: { cmd },
+  globalVariable: { cmd, slash },
 })
 
 client
@@ -34,7 +39,9 @@ client
   })
 
 cmd.loadCommand()
+slash.LoadCommand()
 
+slash.run()
 cmd.run()
 
 client.login(process.env.TOKEN)

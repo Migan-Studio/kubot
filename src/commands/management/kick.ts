@@ -9,11 +9,7 @@ export = class extends MessageCommand {
       return msg.reply(
         `어라..? 일단 ${msg.author.username}님에게 멤버 킥하기 권한이 없으시네요`
       )
-    if (
-      !msg.guild?.members
-        ?.fetch(msg.client.user!.id)
-        .then(member => member.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
-    )
+    if (!msg.guild?.me?.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
       return msg.reply('어라..? 일단 이봇에게 멤버킥하기 권한이 없어요')
     let mentionMember = msg.mentions.members?.first()
     let reason = args.slice(1).join(' ')

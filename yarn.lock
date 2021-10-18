@@ -167,6 +167,11 @@ diff@^4.0.1:
   resolved "https://registry.yarnpkg.com/diff/-/diff-4.0.2.tgz#60f3aecb89d5fae520c11aa19efc2bb982aade7d"
   integrity sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==
 
+discommand-slash@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/discommand-slash/-/discommand-slash-1.0.2.tgz#4d886d5f853f55982618a71c5ed3a2212aefc2e1"
+  integrity sha512-0JOsXkVQ0nK0QVgVGY2emnx14fWor89V6qQAU2e5KEtFTjbEJoWGvtDiEFrsYZTuDonlMOA7UDm/sedrtCEWMA==
+
 discommand@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/discommand/-/discommand-2.1.0.tgz#a90828ad6e190e855e22ae517e76f62cb5f2d8fe"

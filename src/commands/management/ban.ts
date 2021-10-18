@@ -32,7 +32,7 @@ export = class extends MessageCommand {
         .catch(err =>
           msg.reply(`사용자에게 메세지를 못보냈습니다.\n사유: ${err.message}`)
         )
-      await mentionMember!.kick(reason)
+      await mentionMember!.ban({ reason })
     } catch (err) {
       return msg.channel.send('이 사용자가 차단이 안되고 있어요...')
     }
