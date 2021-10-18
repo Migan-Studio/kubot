@@ -21,6 +21,7 @@ export = class extends MessageCommand {
 
 # 유틸리티
 - 핑 [ping]
+- 프로필 [profile]
 
 # 관리
 - 킥 [추방, kick]
