@@ -2,8 +2,8 @@ import { SlashCommand } from 'discommand-slash'
 import {
   CommandInteraction,
   Formatters,
+  GuildMember,
   MessageEmbed,
-  Snowflake,
 } from 'discord.js'
 import { SlashCommandBuilder } from '@discordjs/builders'
 
@@ -12,10 +12,10 @@ export = class extends SlashCommand {
   data = new SlashCommandBuilder()
     .setName('profile')
     .setDescription('당신이나 지목한 유저의 정보를 반환합니다.')
-    .addStringOption(option => {
+    .addMentionableOption(option => {
       return option
-        .setName('id')
-        .setDescription('유저의 아이디')
+        .setName('name')
+        .setDescription('유저의 이름')
         .setRequired(false)
     })
   execute(interaction: CommandInteraction) {
@@ -26,10 +26,9 @@ export = class extends SlashCommand {
         return a
       }
     }
-    let user =
-      interaction.guild?.members.cache.get(
-        interaction.options.getString('id') as string
-      ) || interaction.guild?.members.cache.get(interaction.user.id)
+    let user: GuildMember =
+      (interaction.options.getMentionable('name') as GuildMember) ||
+      interaction.guild?.members.cache.get(interaction.user.id)
     interaction.reply({
       embeds: [
         new MessageEmbed()
