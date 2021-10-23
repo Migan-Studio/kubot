@@ -11,7 +11,7 @@ const client = new Client({
   intents: Object.keys(Intents.FLAGS) as IntentsString[],
 })
 const cmd = new Command(client, {
-  prefix: '--',
+  prefix: 'k!',
   path: path.join(__dirname, 'commands'),
   loadType: 'FOLDER',
 })
