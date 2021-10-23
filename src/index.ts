@@ -1,11 +1,11 @@
-import dotenv from 'dotenv'
+import { config } from 'dotenv'
 import { Client, Intents, IntentsString } from 'discord.js'
 import { Command } from 'discommand'
 import Dokdo from 'dokdo'
 import path = require('path')
 import { Slash } from 'discommand-slash'
 import { Koreanbots } from 'koreanbots'
-dotenv.config()
+config()
 
 const client = new Client({
   intents: Object.keys(Intents.FLAGS) as IntentsString[],
