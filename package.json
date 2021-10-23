@@ -6,10 +6,11 @@
   "dependencies": {
     "discommand": "^2.1.0",
     "discommand-slash": "^1.0.2",
-    "discord.js": "discordjs/discord.js#main",
-    "dokdo": "wonderlandpark/dokdo#main",
+    "discord.js": "^13.2.0",
+    "dokdo": "^0.5.1",
     "dotenv": "^10.0.0",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "koreanbots": "^3.1.0-rc.1"
   },
   "devDependencies": {
     "@types/node": "^16.10.3",
