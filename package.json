@@ -5,7 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "discommand": "^2.1.0",
-    "discommand-slash": "^1.0.2",
+    "discommand-slash": "^1.0.4",
     "discord.js": "^13.2.0",
     "dokdo": "^0.5.1",
     "dotenv": "^10.0.0",
