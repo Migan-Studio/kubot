@@ -27,7 +27,8 @@ export = class extends SlashCommand {
 
 # 관리
 - 킥 [추방, kick]
-- 밴 [차단, ban]`
+- 밴 [차단, ban]
+- 청소 [clear]`
             )
           )
           .setThumbnail(

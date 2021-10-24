@@ -25,10 +25,13 @@ export = class extends MessageCommand {
 
 # 관리
 - 킥 [추방, kick]
-- 밴 [차단, ban]`
+- 밴 [차단, ban]
+- 청소 [clear]`
             )
           )
-          .setThumbnail(msg.author.displayAvatarURL())
+          .setThumbnail(
+            msg.author.displayAvatarURL({ dynamic: true, size: 512 })
+          )
           .setTimestamp(Date.now())
           .setFooter(
             msg.author.tag,
