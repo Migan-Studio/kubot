@@ -21,10 +21,6 @@
   "scripts": {
     "test": "ts-node src",
     "build": "tsc",
-    "start": "node dist",
-    "heroku": "tsc && node dist"
-  },
-  "engines": {
-    "node": "16.6.1"
+    "start": "node dist"
   }
 }
