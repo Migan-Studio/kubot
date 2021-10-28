@@ -58,12 +58,6 @@ client
             servers: client.guilds.cache.size as number,
             shards: client.shard?.count,
           })
-          .then(res =>
-            console.log(
-              '서버 수를 정상적으로 업데이트하였습니다!\n반환된 정보:' +
-                JSON.stringify(res)
-            )
-          )
           .catch(console.error),
       600000
     )
