@@ -30,37 +30,42 @@ const DokdoHandler = new Dokdo(client, {
 
 client
   .on('ready', () => {
-    client.user!.setActivity(`${cmd.prefix}도움말`, { type: 'WATCHING' })
     console.log(`Login: ${client.user!.username}`)
     console.log('======================================')
-    const koreanbots = new Koreanbots({
-      api: {
-        token: process.env.KR_TOKEN!,
-      },
-      clientID: client.user!.id!,
-    })
-    koreanbots.mybot
-      .update({
-        servers: client.guilds.cache.size as number,
-        shards: client.shard?.count,
+    if (client.user!.id! === '889040508473724958') {
+      console.info('this is test bot!')
+      cmd.prefix = 't!'
+    } else {
+      const koreanbots = new Koreanbots({
+        api: {
+          token: process.env.KR_TOKEN!,
+        },
+        clientID: client.user!.id!,
       })
-      .then(res =>
-        console.log(
-          '서버 수를 정상적으로 업데이트하였습니다!\n반환된 정보:' +
-            JSON.stringify(res)
+      koreanbots.mybot
+        .update({
+          servers: client.guilds.cache.size as number,
+          shards: client.shard?.count,
+        })
+        .then(res =>
+          console.log(
+            '서버 수를 정상적으로 업데이트하였습니다!\n반환된 정보:' +
+              JSON.stringify(res)
+          )
         )
+        .catch(console.error)
+      setInterval(
+        () =>
+          koreanbots.mybot
+            .update({
+              servers: client.guilds.cache.size as number,
+              shards: client.shard?.count,
+            })
+            .catch(console.error),
+        600000
       )
-      .catch(console.error)
-    setInterval(
-      () =>
-        koreanbots.mybot
-          .update({
-            servers: client.guilds.cache.size as number,
-            shards: client.shard?.count,
-          })
-          .catch(console.error),
-      600000
-    )
+    }
+    client.user!.setActivity(`${cmd.prefix}도움말`, { type: 'WATCHING' })
   })
   .on('messageCreate', msg => {
     if (msg.author.bot || msg.channel.type == 'DM') return

@@ -7,10 +7,11 @@
     "discommand": "^2.1.0",
     "discommand-slash": "^1.0.4",
     "discord.js": "^13.2.0",
+    "djs-interaction-util": "^0.1.8",
     "dokdo": "^0.5.1",
     "dotenv": "^10.0.0",
-    "prettier": "^2.4.1",
-    "koreanbots": "^3.1.0"
+    "koreanbots": "^3.1.0",
+    "prettier": "^2.4.1"
   },
   "devDependencies": {
     "@types/node": "^16.10.3",

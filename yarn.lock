@@ -326,6 +326,11 @@ discord.js@>=13, discord.js@^13.2.0:
     node-fetch "^2.6.1"
     ws "^8.2.3"
 
+djs-interaction-util@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/djs-interaction-util/-/djs-interaction-util-0.1.8.tgz#3cfc370e5a319337bedb037971cb1ddf60423b18"
+  integrity sha512-JvXK+hQdxboKgst2vNHwN6icWhyloBtV0ZOrytz0jV4CHDTvJMH1x48U/M76FM/TFJz5TnJWIQCOlI/CcP7x3A==
+
 dokdo@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/dokdo/-/dokdo-0.5.1.tgz#5974ac32af31fce51935c8036de2667d98e22c9e"
