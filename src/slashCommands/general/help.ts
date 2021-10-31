@@ -20,6 +20,7 @@ export = class extends SlashCommand {
 
 # 일반
 - 도움말 [help]
+- 문의 [support]
 
 # 유틸리티
 - 핑 [ping]
