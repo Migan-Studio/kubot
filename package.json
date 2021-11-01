@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "license": "MIT",
   "dependencies": {
-    "discommand": "^2.1.0",
+    "discommand": "^2.2.0",
     "discommand-slash": "^1.0.4",
     "discord.js": "^13.3.0",
     "djs-interaction-util": "^0.1.8",

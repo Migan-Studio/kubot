@@ -308,10 +308,10 @@ discommand-slash@^1.0.4:
   resolved "https://registry.yarnpkg.com/discommand-slash/-/discommand-slash-1.0.4.tgz#4c08e004a8955c91dca819b2c659b8264cd6ea3e"
   integrity sha512-2A68e5X1CMKW3x02n/QgYCqdYvLDqRSGhu/8tk8blQxeUdsScMTk9b6T2Re+duE7VimCKBCqZWbnvsHyrIPdbA==
 
-discommand@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/discommand/-/discommand-2.1.0.tgz#a90828ad6e190e855e22ae517e76f62cb5f2d8fe"
-  integrity sha512-cu0kud1tG9qfzgsBha2q3yHWn+zRMJ6+P0OLaC+Xxd2+4+0XubOYN5PVijQ2R+3l/VL0JdvFIFPvDJzfZsE1DA==
+discommand@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/discommand/-/discommand-2.2.0.tgz#312eab8f8c7cfc98c85a727b785ffcbe0ece903d"
+  integrity sha512-3rwuXncDcsvtrWNp96/rZRRTDcBt4mTlL6UxeMiJgWVV8nA84LApk4jszAYqbC6YrhMJ378V3SKSDT7d9SSf4g==
   dependencies:
     "@discordjs/builders" "^0.6.0"
     "@discordjs/rest" "^0.1.0-canary.0"
