@@ -16,7 +16,7 @@ export = class extends SlashCommand {
             Formatters.codeBlock(
               'markdown',
               `# 접두사
---
+k!
 
 # 일반
 - 도움말 [help]
