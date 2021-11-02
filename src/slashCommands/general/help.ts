@@ -21,6 +21,7 @@ k!
 # 일반
 - 도움말 [help]
 - 문의 [support]
+- 정보 [info, Info]
 
 # 유틸리티
 - 핑 [ping]
