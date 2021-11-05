@@ -15,7 +15,8 @@ export = class extends MessageCommand {
         .then(member => member.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
     )
       return msg.reply('어라..? 일단 이봇에게 멤버 차단하기 권한이 없어요')
-    let mentionMember = msg.mentions.members?.first()
+    let mentionMember =
+      msg.mentions.members?.first() || msg.guild!.members.cache.get(args[0])
     let reason = args.slice(1).join(' ')
     if (!reason) reason = ' 없음'
 

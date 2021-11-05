@@ -11,7 +11,8 @@ export = class extends MessageCommand {
       )
     if (!msg.guild?.me?.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
       return msg.reply('어라..? 일단 이봇에게 멤버킥하기 권한이 없어요')
-    let mentionMember = msg.mentions.members?.first()
+    let mentionMember =
+      msg.mentions.members?.first() || msg.guild!.members.cache.get(args[0])
     let reason = args.slice(1).join(' ')
     if (!reason) reason = ' 없음'
 
