@@ -1,5 +1,11 @@
 import { SlashCommand } from 'discommand-slash'
-import { CommandInteraction, Formatters, MessageEmbed } from 'discord.js'
+import {
+  CommandInteraction,
+  Formatters,
+  MessageEmbed,
+  MessageActionRow,
+  MessageButton,
+} from 'discord.js'
 import { SlashCommandBuilder } from '@discordjs/builders'
 
 export = class extends SlashCommand {
@@ -41,6 +47,25 @@ k!
           .setFooter(
             interaction.user.tag,
             interaction.user.displayAvatarURL({ dynamic: true, size: 512 })
+          ),
+      ],
+      components: [
+        new MessageActionRow()
+          .addComponents(
+            new MessageButton()
+              .setLabel('봇초대')
+              .setStyle('LINK')
+              .setURL(
+                'https://discord.com/api/oauth2/authorize?client_id=704999866094452816&permissions=8&scope=bot%20applications.commands'
+              )
+              .setEmoji('🔗')
+          )
+          .addComponents(
+            new MessageButton()
+              .setLabel('봇 소스코드')
+              .setStyle('LINK')
+              .setURL('https://github.com/Migan178/kubot')
+              .setEmoji('🔗')
           ),
       ],
     })

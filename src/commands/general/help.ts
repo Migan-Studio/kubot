@@ -1,5 +1,11 @@
 import { MessageCommand } from 'discommand'
-import { Message, MessageEmbed, Formatters } from 'discord.js'
+import {
+  Message,
+  MessageEmbed,
+  Formatters,
+  MessageActionRow,
+  MessageButton,
+} from 'discord.js'
 
 export = class extends MessageCommand {
   name = '도움말'
@@ -39,6 +45,25 @@ k!
           .setFooter(
             msg.author.tag,
             msg.author.displayAvatarURL({ dynamic: true, size: 512 })
+          ),
+      ],
+      components: [
+        new MessageActionRow()
+          .addComponents(
+            new MessageButton()
+              .setLabel('봇초대')
+              .setStyle('LINK')
+              .setURL(
+                'https://discord.com/api/oauth2/authorize?client_id=704999866094452816&permissions=8&scope=bot%20applications.commands'
+              )
+              .setEmoji('🔗')
+          )
+          .addComponents(
+            new MessageButton()
+              .setLabel('봇 소스코드')
+              .setStyle('LINK')
+              .setURL('https://github.com/Migan178/kubot')
+              .setEmoji('🔗')
           ),
       ],
     })
