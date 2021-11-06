@@ -303,10 +303,10 @@ diff@^4.0.1:
   resolved "https://registry.yarnpkg.com/diff/-/diff-4.0.2.tgz#60f3aecb89d5fae520c11aa19efc2bb982aade7d"
   integrity sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==
 
-discommand-slash@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/discommand-slash/-/discommand-slash-1.0.4.tgz#4c08e004a8955c91dca819b2c659b8264cd6ea3e"
-  integrity sha512-2A68e5X1CMKW3x02n/QgYCqdYvLDqRSGhu/8tk8blQxeUdsScMTk9b6T2Re+duE7VimCKBCqZWbnvsHyrIPdbA==
+discommand-slash@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/discommand-slash/-/discommand-slash-1.1.0.tgz#3c7d9557b5e5995dacb29ffc2faf7848ddbd09e6"
+  integrity sha512-wMj8syX6ee6LiW821PLJj1JDV9daJINP1ojxQKju+NTECHgpicrGT9WarUXifEtds3Lb14ub8yO0YCes/R3hfw==
 
 discommand@^2.2.0:
   version "2.2.0"
