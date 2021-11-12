@@ -37,7 +37,8 @@ k!
 - 킥 [추방, kick]
 - 밴 [차단, ban]
 - 청소 [clear]
-- 슬로우모드 [slowmode]`
+- 슬로우모드 [slowmode]
+- 언밴 [차단해제, unban]`
             )
           )
           .setThumbnail(
