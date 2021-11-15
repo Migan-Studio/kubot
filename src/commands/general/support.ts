@@ -1,11 +1,21 @@
-import { MessageCommand } from 'discommand'
+import { Command } from 'discord-akairo'
 import { Formatters, Message, Team, User } from 'discord.js'
 
-export = class extends MessageCommand {
-  name = '문의'
-  aliases = ['support', '지원']
-  execute(msg: Message, args: string[]) {
-    let content = args.join(' ')
+export default class SupportCommand extends Command {
+  constructor() {
+    super('support', {
+      aliases: ['support', '문의'],
+      args: [
+        {
+          id: 'content',
+          prompt: {
+            start: '문의할 사항을 알려주세요',
+          },
+        },
+      ],
+    })
+  }
+  exec(msg: Message, { content }: { content?: string }) {
     if (!content) return msg.reply('문의사항을 적어주세요!')
     let user
     if (msg.client.application?.owner instanceof User) {

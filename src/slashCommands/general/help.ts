@@ -22,7 +22,7 @@ export = class extends SlashCommand {
             Formatters.codeBlock(
               'markdown',
               `# 접두사
-k!
+k!, ㅏ!, K!
 
 # 일반
 - 도움말 [help]

@@ -1,10 +1,24 @@
-import { MessageCommand } from 'discommand'
+import { Command, Argument } from 'discord-akairo'
 import { Message, MessageEmbed, Formatters, Presence } from 'discord.js'
 
-export = class extends MessageCommand {
-  name = '프로필'
-  aliases = ['profile']
-  execute(msg: Message, args: string[]) {
+export default class ProfileCommand extends Command {
+  // name = '프로필'
+  // aliases = ['profile']
+  constructor() {
+    super('profile', {
+      aliases: ['profile', '프로필'],
+      args: [
+        {
+          id: 'member',
+          type: Argument.union('Member', 'String'),
+          prompt: {
+            optional: true,
+          },
+        },
+      ],
+    })
+  }
+  exec(msg: Message, { member }: { member: string }) {
     function a(a: any) {
       if (a === null || a === undefined) {
         return '없음'
@@ -14,7 +28,7 @@ export = class extends MessageCommand {
     }
     let user =
       msg.mentions.members!.first() ||
-      msg.guild!.members.cache.get(args[0]) ||
+      msg.guild!.members.cache.get(member) ||
       msg.member
     msg.reply({
       embeds: [

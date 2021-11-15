@@ -1,10 +1,13 @@
-import { MessageCommand } from 'discommand'
+import { Command } from 'discord-akairo'
 import { Formatters, Message, MessageEmbed } from 'discord.js'
 
-export = class extends MessageCommand {
-  name = '핑'
-  aliases = ['ping']
-  execute(msg: Message, args: string[]) {
+export default class PingCommand extends Command {
+  constructor() {
+    super('ping', {
+      aliases: ['ping', '핑'],
+    })
+  }
+  exec(msg: Message) {
     const embed = new MessageEmbed()
       .setColor(0x459ff7)
       .setTitle('퐁!')

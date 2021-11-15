@@ -1,4 +1,4 @@
-import { MessageCommand } from 'discommand'
+import { Command } from 'discord-akairo'
 import {
   Message,
   MessageEmbed,
@@ -7,10 +7,13 @@ import {
   MessageButton,
 } from 'discord.js'
 
-export = class extends MessageCommand {
-  name = '도움말'
-  aliases = ['help', '도움']
-  execute(msg: Message, args: string[]) {
+export default class HelpCommand extends Command {
+  constructor() {
+    super('help', {
+      aliases: ['help', '도움말'],
+    })
+  }
+  exec(msg: Message) {
     msg.reply({
       embeds: [
         new MessageEmbed()
@@ -20,7 +23,7 @@ export = class extends MessageCommand {
             Formatters.codeBlock(
               'markdown',
               `# 접두사
-k!
+k!, ㅏ!, K!
 
 # 일반
 - 도움말 [help]

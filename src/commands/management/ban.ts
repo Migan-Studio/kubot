@@ -1,10 +1,31 @@
-import { MessageCommand } from 'discommand'
+import { Argument, Command } from 'discord-akairo'
 import { Message, Permissions } from 'discord.js'
 
-export = class extends MessageCommand {
-  name = '밴'
-  aliases = ['차단', 'ban']
-  async execute(msg: Message, args: string[]) {
+export default class BanCommand extends Command {
+  constructor() {
+    super('ban', {
+      aliases: ['ban', '밴'],
+      args: [
+        {
+          id: 'Member',
+          type: Argument.union('String', 'Member'),
+          prompt: {
+            start: '차단할 사용자를 지정하셨나요?',
+          },
+        },
+        {
+          id: 'reason',
+          prompt: {
+            optional: true,
+          },
+        },
+      ],
+    })
+  }
+  async exec(
+    msg: Message,
+    { Member, reason }: { Member?: string; reason?: string }
+  ) {
     if (!msg.member?.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
       return msg.reply(
         `어라..? 일단 ${msg.author.username}님에게 멤버 차단하기 권한이 없으시네요`
@@ -16,11 +37,9 @@ export = class extends MessageCommand {
     )
       return msg.reply('어라..? 일단 이봇에게 멤버 차단하기 권한이 없어요')
     let mentionMember =
-      msg.mentions.members?.first() || msg.guild!.members.cache.get(args[0])
-    let reason = args.slice(1).join(' ')
+      msg.mentions.members?.first() || msg.guild!.members.cache.get(Member!)
     if (!reason) reason = ' 없음'
 
-    if (!args[0]) return msg.reply('차단할 사용자를 지정하셨나요?')
     if (!mentionMember!.bannable)
       return msg.reply('이 사용자는 제가 밴을 못해요...')
 

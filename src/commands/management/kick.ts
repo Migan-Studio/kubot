@@ -1,10 +1,31 @@
-import { MessageCommand } from 'discommand'
+import { Argument, Command } from 'discord-akairo'
 import { Message, Permissions } from 'discord.js'
 
-export = class extends MessageCommand {
-  name = '킥'
-  aliases = ['추방', 'kick']
-  async execute(msg: Message, args: string[]) {
+export = class KickCommand extends Command {
+  constructor() {
+    super('kick', {
+      aliases: ['kick', '추방'],
+      args: [
+        {
+          id: 'Member',
+          type: Argument.union('String', 'Member'),
+          prompt: {
+            start: '추방할 사용자를 지정하셨나요?',
+          },
+        },
+        {
+          id: 'reason',
+          prompt: {
+            optional: true,
+          },
+        },
+      ],
+    })
+  }
+  async exec(
+    msg: Message,
+    { Member, reason }: { Member: string; reason: string }
+  ) {
     if (!msg.member?.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
       return msg.reply(
         `어라..? 일단 ${msg.author.username}님에게 멤버 킥하기 권한이 없으시네요`
@@ -12,11 +33,9 @@ export = class extends MessageCommand {
     if (!msg.guild?.me?.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
       return msg.reply('어라..? 일단 이봇에게 멤버킥하기 권한이 없어요')
     let mentionMember =
-      msg.mentions.members?.first() || msg.guild!.members.cache.get(args[0])
-    let reason = args.slice(1).join(' ')
+      msg.mentions.members?.first() || msg.guild!.members.cache.get(Member)
     if (!reason) reason = ' 없음'
 
-    if (!args[0]) return msg.reply('킥할 사용자를 지정하셨나요?')
     if (!mentionMember!.kickable)
       return msg.reply('이 사용자는 제가 킥을 못해요...')
 

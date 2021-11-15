@@ -1,13 +1,16 @@
-import { MessageCommand } from 'discommand'
+import { Command } from 'discord-akairo'
 import { Message, MessageEmbed, Formatters } from 'discord.js'
 import { ButtonPaginator } from 'djs-interaction-util'
 import os from 'os'
 import modules from '../../../package.json'
 
-export = class extends MessageCommand {
-  name = '정보'
-  aliases = ['info', 'Info']
-  execute(msg: Message, args: string[]) {
+export default class InfoCommand extends Command {
+  constructor() {
+    super('info', {
+      aliases: ['info', '정보' /*'Info'*/],
+    })
+  }
+  exec(msg: Message) {
     const Embed = new MessageEmbed()
       .setTitle('모듈정보')
       .setTimestamp(Date.now())
