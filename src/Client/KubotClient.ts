@@ -11,6 +11,7 @@ declare module 'discord-akairo' {
     dokdo: Dokdo
     commandHandler: CommandHandler
     listenerHandler: ListenerHandler
+    slash: Slash
   }
 }
 
@@ -60,6 +61,8 @@ export default class KubotClient extends AkairoClient {
   public async start() {
     this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
+    this.slash.LoadCommand()
+    this.slash.run()
     this.login(process.env.TOKEN)
   }
 }
