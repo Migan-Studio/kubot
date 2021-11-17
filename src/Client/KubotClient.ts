@@ -24,7 +24,7 @@ export default class KubotClient extends AkairoClient {
   constructor() {
     super(
       {
-        ownerID: process.env.OWNER_ID?.split(' '),
+        ownerID: JSON.parse(process.env.OWNER_ID!),
       },
       {
         intents: Object.keys(Intents.FLAGS) as IntentsString[],
@@ -34,7 +34,7 @@ export default class KubotClient extends AkairoClient {
 
   public commandHandler: CommandHandler = new CommandHandler(this, {
     directory: path.join(__dirname, '..', 'commands'),
-    prefix: process.env.PREFIX!.split(' '),
+    prefix: JSON.parse(process.env.PREFIX!),
     commandUtil: true,
     automateCategories: true,
     handleEdits: true,
@@ -50,7 +50,7 @@ export default class KubotClient extends AkairoClient {
     path: path.join(__dirname, '..', 'slashCommands'),
   })
   public dokdo = new Dokdo(this, {
-    prefix: process.env.PREFIX!.split(' ')[0],
+    prefix: JSON.parse(process.env.PREFIX!)[0],
     noPerm: msg => {
       msg.react('❌')
       msg.reply('어라...? 일단 권한이...')
