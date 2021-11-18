@@ -24,7 +24,10 @@ export = class extends SlashCommand {
           user.send(
             `새문의가 왔어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
               Math.floor(interaction.createdTimestamp / 1000)
-            )}`
+            )} (${Formatters.time(
+              Math.floor(interaction.createdTimestamp / 1000),
+              'R'
+            )})`
           )
         )
       interaction.reply({
@@ -41,13 +44,19 @@ export = class extends SlashCommand {
           user.send(
             `새문의가 왔어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
               Math.floor(interaction.createdTimestamp / 1000)
-            )}`
+            )} (${Formatters.time(
+              Math.floor(interaction.createdTimestamp / 1000),
+              'R'
+            )})`
           )
         )
       interaction.reply({
         content: `문의를 성공적으로 보냈어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
           Math.floor(interaction.createdTimestamp / 1000)
-        )}`,
+        )} (${Formatters.time(
+          Math.floor(interaction.createdTimestamp / 1000),
+          'R'
+        )})`,
         ephemeral: true,
       })
     }

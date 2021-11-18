@@ -26,13 +26,16 @@ export default class SupportCommand extends Command {
           user.send(
             `새문의가 왔어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
               Math.floor(msg.createdTimestamp / 1000)
-            )}`
+            )} (${Formatters.time(
+              Math.floor(msg.createdTimestamp / 1000),
+              'R'
+            )})`
           )
         )
       msg.reply(
         `문의를 성공적으로 보냈어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
           Math.floor(msg.createdTimestamp / 1000)
-        )}`
+        )} (${Formatters.time(Math.floor(msg.createdTimestamp / 1000), 'R')})`
       )
     } else if (msg.client.application?.owner instanceof Team) {
       user = msg.client.application?.owner?.ownerId
@@ -42,13 +45,16 @@ export default class SupportCommand extends Command {
           user.send(
             `새문의가 왔어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
               Math.floor(msg.createdTimestamp / 1000)
-            )}`
+            )} (${Formatters.time(
+              Math.floor(msg.createdTimestamp / 1000),
+              'R'
+            )})`
           )
         )
       msg.reply(
         `문의를 성공적으로 보냈어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
           Math.floor(msg.createdTimestamp / 1000)
-        )}`
+        )} (${Formatters.time(Math.floor(msg.createdTimestamp / 1000), 'R')})`
       )
     }
   }
