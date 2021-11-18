@@ -1,4 +1,4 @@
-import { Command } from 'discord-akairo'
+import { Argument, Command } from 'discord-akairo'
 import { Formatters, Message, Team, User } from 'discord.js'
 
 export default class SupportCommand extends Command {
@@ -8,6 +8,7 @@ export default class SupportCommand extends Command {
       args: [
         {
           id: 'content',
+          type: Argument.union('string[]'),
           prompt: {
             start: '문의할 사항을 알려주세요',
           },
@@ -16,7 +17,12 @@ export default class SupportCommand extends Command {
     })
   }
   exec(msg: Message, { content }: { content?: string }) {
-    if (!content) return msg.reply('문의사항을 적어주세요!')
+    const a = msg.content
+      .slice(msg.util?.parsed?.prefix!.length)
+      .trim()
+      .split(/ +/g)
+      .join(' ')
+    if (!a) return msg.reply('문의사항을 적어주세요!')
     let user
     if (msg.client.application?.owner instanceof User) {
       user = msg.client.application?.owner?.id
@@ -24,7 +30,7 @@ export default class SupportCommand extends Command {
         .fetch(user!)
         .then(user =>
           user.send(
-            `새문의가 왔어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
+            `새문의가 왔어요!\n문의 내용: ${a}\n문의 작성시간: ${Formatters.time(
               Math.floor(msg.createdTimestamp / 1000)
             )} (${Formatters.time(
               Math.floor(msg.createdTimestamp / 1000),
@@ -33,7 +39,7 @@ export default class SupportCommand extends Command {
           )
         )
       msg.reply(
-        `문의를 성공적으로 보냈어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
+        `문의를 성공적으로 보냈어요!\n문의 내용: ${a}\n문의 작성시간: ${Formatters.time(
           Math.floor(msg.createdTimestamp / 1000)
         )} (${Formatters.time(Math.floor(msg.createdTimestamp / 1000), 'R')})`
       )
@@ -43,7 +49,7 @@ export default class SupportCommand extends Command {
         .fetch(user!)
         .then(user =>
           user.send(
-            `새문의가 왔어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
+            `새문의가 왔어요!\n문의 내용: ${a}\n문의 작성시간: ${Formatters.time(
               Math.floor(msg.createdTimestamp / 1000)
             )} (${Formatters.time(
               Math.floor(msg.createdTimestamp / 1000),
@@ -52,7 +58,7 @@ export default class SupportCommand extends Command {
           )
         )
       msg.reply(
-        `문의를 성공적으로 보냈어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
+        `문의를 성공적으로 보냈어요!\n문의 내용: ${a}\n문의 작성시간: ${Formatters.time(
           Math.floor(msg.createdTimestamp / 1000)
         )} (${Formatters.time(Math.floor(msg.createdTimestamp / 1000), 'R')})`
       )
