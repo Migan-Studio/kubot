@@ -11,7 +11,6 @@ export default class InfoCommand extends Command {
     })
   }
   exec(msg: Message) {
-    console.log(msg.client.getOwner())
     const Embed = new MessageEmbed()
       .setTitle('모듈정보')
       .setTimestamp(Date.now())
