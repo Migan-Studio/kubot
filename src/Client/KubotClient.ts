@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 dotenv.config()
 import { AkairoClient, CommandHandler, ListenerHandler } from 'discord-akairo'
-import { Intents, IntentsString } from 'discord.js'
+import { Intents, IntentsString, User } from 'discord.js'
 import path = require('path')
 import Dokdo from 'dokdo'
 import { Slash } from 'discommand-slash'
@@ -12,11 +12,16 @@ declare module 'discord-akairo' {
     commandHandler: CommandHandler
     listenerHandler: ListenerHandler
     slash: Slash
+    getOwner(): User | undefined
   }
 }
 
 declare module 'discord.js' {
   interface Message {
+    client: AkairoClient
+  }
+
+  interface CommandInteraction {
     client: AkairoClient
   }
 }
@@ -64,5 +69,17 @@ export default class KubotClient extends AkairoClient {
     this.slash.LoadCommand()
     this.slash.run()
     this.login(process.env.TOKEN)
+  }
+
+  public getOwner() {
+    if (Array.isArray(this.ownerID)) {
+      for (const id of this.ownerID) {
+        const user = this.users.cache.get(id)
+        return user
+      }
+    } else if (!Array.isArray(this.ownerID)) {
+      const user = this.users.cache.get(this.ownerID)
+      return user
+    }
   }
 }

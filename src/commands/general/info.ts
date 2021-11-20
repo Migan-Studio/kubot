@@ -11,6 +11,7 @@ export default class InfoCommand extends Command {
     })
   }
   exec(msg: Message) {
+    console.log(msg.client.getOwner())
     const Embed = new MessageEmbed()
       .setTitle('모듈정보')
       .setTimestamp(Date.now())
@@ -34,8 +35,11 @@ export default class InfoCommand extends Command {
                 Formatters.codeBlock(
                   'markdown',
                   `# 접두사
-k!
+k!, ㅏ!, K!
   
+# 봇 개발자
+${msg.client.getOwner()?.tag}
+
 # Node.js 버전
 ${process.version}
   

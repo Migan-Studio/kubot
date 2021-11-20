@@ -33,7 +33,10 @@ export = class extends SlashCommand {
                 Formatters.codeBlock(
                   'markdown',
                   `# 접두사
-k!
+k!, ㅏ!, K!
+
+# 봇 개발자
+${interaction.client.getOwner()?.tag}
 
 # Node.js 버전
 ${process.version}
