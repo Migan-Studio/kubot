@@ -67,6 +67,13 @@ k!, ㅏ!, K!
               .setStyle('LINK')
               .setURL('https://github.com/Migan178/kubot')
               .setEmoji('🔗')
+          )
+          .addComponents(
+            new MessageButton()
+              .setLabel('봇 서포트 서버')
+              .setStyle('LINK')
+              .setURL('https://discord.gg/mJ8kPgMUpD')
+              .setEmoji('🔗')
           ),
       ],
     })
