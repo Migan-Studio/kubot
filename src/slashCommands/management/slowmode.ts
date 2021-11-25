@@ -34,7 +34,11 @@ export = class extends SlashCommand {
         ephemeral: true,
       })
 
-    channel.setRateLimitPerUser(interaction.options!.getNumber('second')!)
+    if (interaction.options.getNumber('second')! > 21600)
+      return interaction.reply({
+        content: '슬로우모드는 6시간 이하만 가능해요',
+        ephemeral: true,
+      })
     interaction.reply({
       content: `슬로우 모드를 ${interaction.options.getNumber(
         'second'

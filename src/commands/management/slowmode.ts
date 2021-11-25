@@ -31,6 +31,7 @@ export default class SlowmodeCommand extends Command {
     // if (!args[0]) return msg.reply('슬로우모드를 설정할 초를 알려주세요')
     // if (isNaN(Number(args[0])))
     // return msg.reply('이 인자는 숫자로만 주어줘야해요')
+    if (second > 21600) return msg.reply('슬로우모드는 6시간 이하만 가능해요')
     channel.setRateLimitPerUser(Number(second))
     msg.reply(`슬로우모드를 ${second}초로 설정했어요`)
   }
