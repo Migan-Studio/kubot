@@ -4,7 +4,7 @@
   "main": "dist/src/index.js",
   "license": "MIT",
   "dependencies": {
-    "discommand-slash": "^1.1.0",
+    "discommand-slash": "^2.0.0",
     "discord-akairo": "discord-akairo/discord-akairo#master",
     "discord.js": "^13.3.1",
     "djs-interaction-util": "^0.1.9",

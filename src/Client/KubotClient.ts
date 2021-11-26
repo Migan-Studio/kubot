@@ -1,10 +1,10 @@
 import dotenv from 'dotenv'
-dotenv.config()
 import { AkairoClient, CommandHandler, ListenerHandler } from 'discord-akairo'
 import { Intents, IntentsString, User } from 'discord.js'
 import path = require('path')
 import Dokdo from 'dokdo'
 import { Slash } from 'discommand-slash'
+dotenv.config()
 
 declare module 'discord-akairo' {
   interface AkairoClient {
@@ -67,7 +67,6 @@ export default class KubotClient extends AkairoClient {
     this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
     this.slash.LoadCommand()
-    this.slash.run()
     this.login(process.env.TOKEN)
   }
 

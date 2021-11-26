@@ -18,12 +18,38 @@ export = class extends SlashCommand {
         .setDescription('유저의 이름')
         .setRequired(false)
     })
+
   execute(interaction: CommandInteraction) {
-    function a(a: any) {
-      if (a === null || a === undefined) {
+    function a(a: boolean) {
+      if (!a) {
+        return '봇이 아니에요'
+      } else if (a) {
+        return '봇이 맞아요'
+      }
+    }
+
+    function b(status: GuildMember) {
+      if (!status.presence?.status) {
         return '없음'
       } else {
-        return a
+        switch (status.presence!.status) {
+          case 'online':
+            return '온라인'
+          case 'idle':
+            return '자리 비움'
+          case 'dnd':
+            return '다른 용무 중'
+          case 'offline':
+            return '오프라인'
+        }
+      }
+    }
+
+    function c(c: string) {
+      if (c === null || c === undefined) {
+        return '없음'
+      } else {
+        return c
       }
     }
     let user: GuildMember =
@@ -47,13 +73,13 @@ ${user?.user.username}
 ${user?.user.discriminator}
 
 # 상태
-${a(user?.presence?.status!)}
+${b(user!)}
 
 # 봇여부
-${user?.user.bot}
+${a(user?.user.bot)}
 
 # 닉네임
-${a(user?.nickname!)}
+${c(user?.nickname!)}
 
 # 계정 생성일
 ${user?.user.createdAt.toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })}
