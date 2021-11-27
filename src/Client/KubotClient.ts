@@ -39,7 +39,7 @@ export default class KubotClient extends AkairoClient {
 
   public commandHandler: CommandHandler = new CommandHandler(this, {
     directory: path.join(__dirname, '..', 'commands'),
-    prefix: JSON.parse(process.env.PREFIX!),
+    prefix: JSON.parse(process.env.BOT_PREFIX!),
     commandUtil: true,
     automateCategories: true,
     handleEdits: true,
