@@ -55,7 +55,7 @@ export default class KubotClient extends AkairoClient {
     path: path.join(__dirname, '..', 'slashCommands'),
   })
   public dokdo = new Dokdo(this, {
-    prefix: JSON.parse(process.env.PREFIX!)[0],
+    prefix: JSON.parse(process.env.BOT_PREFIX!)[0],
     noPerm: msg => {
       msg.react('❌')
       msg.reply('어라...? 일단 권한이...')
