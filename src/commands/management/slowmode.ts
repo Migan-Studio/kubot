@@ -22,7 +22,7 @@ export default class SlowmodeCommand extends Command {
     const channel = msg.channel as TextChannel
     if (!msg.guild)
       return msg.reply('이 명령어는 서버내에서만 사용할 수 있어요')
-    if (!msg.member!.permissions.has('MANAGE_CHANNELS'))
+    if (!msg.member?.permissions.has('MANAGE_CHANNELS'))
       return msg.reply(
         `어라..? 일단 ${msg.author.username}님에게 채널 관리하기 권한이 없으시네요`
       )

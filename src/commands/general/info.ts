@@ -15,7 +15,7 @@ export default class InfoCommand extends Command {
       .setTitle('모듈정보')
       .setTimestamp(Date.now())
       .setFooter(msg.author.tag, msg.author.displayAvatarURL())
-    for (let module of Object.entries(modules.dependencies)) {
+    for (const module of Object.entries(modules.dependencies)) {
       Embed.addField(module[0], '`' + remove(module[1]) + '`', true)
     }
     function remove(string: string) {

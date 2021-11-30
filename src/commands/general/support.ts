@@ -8,7 +8,7 @@ export default class SupportCommand extends Command {
       args: [
         {
           id: 'content',
-          type: Argument.union('string[]'),
+          type: Argument.union('string'),
           prompt: {
             start: '문의할 사항을 알려주세요',
           },
@@ -16,9 +16,10 @@ export default class SupportCommand extends Command {
       ],
     })
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   exec(msg: Message, { content }: { content?: string }) {
     const a = msg.content
-      .slice(msg.util?.parsed?.prefix!.length)
+      .slice(msg.util?.parsed?.prefix?.length)
       .trim()
       .split(/ +/g)
       .join(' ')
@@ -27,7 +28,7 @@ export default class SupportCommand extends Command {
     if (msg.client.application?.owner instanceof User) {
       user = msg.client.application?.owner?.id
       msg.client.users
-        .fetch(user!)
+        .fetch(user as string)
         .then(user =>
           user.send(
             `새문의가 왔어요!\n문의 내용: ${a}\n문의 작성시간: ${Formatters.time(
@@ -46,7 +47,7 @@ export default class SupportCommand extends Command {
     } else if (msg.client.application?.owner instanceof Team) {
       user = msg.client.application?.owner?.ownerId
       msg.client.users
-        .fetch(user!)
+        .fetch(user as string)
         .then(user =>
           user.send(
             `새문의가 왔어요!\n문의 내용: ${a}\n문의 작성시간: ${Formatters.time(

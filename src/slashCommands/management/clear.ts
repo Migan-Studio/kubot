@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { SlashCommand } from 'discommand-slash'
 import { CommandInteraction, Permissions } from 'discord.js'
 import { SlashCommandBuilder } from '@discordjs/builders'
@@ -30,12 +31,12 @@ export = class extends SlashCommand {
         content: '어라..? 일단 이봇에게 메세지 관리하기 권한이 없어요',
         ephemeral: true,
       })
-    if (interaction.options.getNumber('limit')! > 100)
+    if ((interaction.options.getNumber('limit') as number) > 100)
       return interaction.reply({
         content: '100까지만 가능해요.',
         ephemeral: true,
       })
-    if (interaction.options.getNumber('limit')! < 0)
+    if ((interaction.options.getNumber('limit') as number) < 0)
       return interaction.reply({
         content: '0위로 해주셔야 해요',
         ephemeral: true,
@@ -43,7 +44,7 @@ export = class extends SlashCommand {
 
     await interaction.channel?.messages
       .fetch({
-        limit: interaction.options.getNumber('limit')!,
+        limit: interaction.options.getNumber('limit') as number,
       })
       .then(messages => {
         interaction.guild?.channels.fetch(interaction.channelId).then(a => {

@@ -10,16 +10,16 @@ export default class Ready extends Listener {
   }
 
   exec() {
-    console.log(`Login: ${this.client.user!.username}`)
+    console.log(`Login: ${this.client.user?.username}`)
     console.log('======================================')
-    if (this.client.user!.id === '889040508473724958') {
+    if (this.client.user?.id === '889040508473724958') {
       console.log('this is Test bot.')
     } else {
       const koreanbots = new Koreanbots({
         api: {
-          token: process.env.KR_TOKEN!,
+          token: process.env.KR_TOKEN as string,
         },
-        clientID: this.client.user!.id!,
+        clientID: this.client.user?.id as string,
       })
       koreanbots.mybot
         .update({
@@ -45,6 +45,6 @@ export default class Ready extends Listener {
       )
     }
     const prefix = this.client.commandHandler.prefix as string[]
-    this.client.user!.setActivity(`${prefix[0]}도움말`, { type: 'WATCHING' })
+    this.client.user?.setActivity(`${prefix[0]}도움말`, { type: 'WATCHING' })
   }
 }

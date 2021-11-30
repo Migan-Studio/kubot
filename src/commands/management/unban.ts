@@ -28,11 +28,11 @@ export default class UnbanCommand extends Command {
       )
     if (
       !msg.guild?.members
-        ?.fetch(msg.client.user!.id)
+        ?.fetch(msg.client.user?.id as string)
         .then(member => member.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
     )
       return msg.reply('어라..? 일단 이봇에게 멤버 차단하기 권한이 없어요')
-    msg.guild!.members.unban(member).catch((error: Error) => {
+    msg.guild?.members.unban(member).catch((error: Error) => {
       console.log(error)
     })
     msg.reply('해당 해당유저를 차단해제했어요')

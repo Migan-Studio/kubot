@@ -8,6 +8,7 @@ import {
 import { SlashCommandBuilder } from '@discordjs/builders'
 
 export = class extends SlashCommand {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   data = new SlashCommandBuilder()
     .setName('profile')
@@ -32,7 +33,7 @@ export = class extends SlashCommand {
       if (!status.presence?.status) {
         return '없음'
       } else {
-        switch (status.presence!.status) {
+        switch (status.presence?.status) {
           case 'online':
             return '온라인'
           case 'idle':
@@ -52,7 +53,7 @@ export = class extends SlashCommand {
         return c
       }
     }
-    let user: GuildMember =
+    const user: GuildMember =
       (interaction.options.getMentionable('name') as GuildMember) ||
       interaction.guild?.members.cache.get(interaction.user.id)
     interaction.reply({
@@ -73,13 +74,13 @@ ${user?.user.username}
 ${user?.user.discriminator}
 
 # 상태
-${b(user!)}
+${b(user as GuildMember)}
 
 # 봇여부
 ${a(user?.user.bot)}
 
 # 닉네임
-${c(user?.nickname!)}
+${c(user?.nickname as string)}
 
 # 계정 생성일
 ${user?.user.createdAt.toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })}

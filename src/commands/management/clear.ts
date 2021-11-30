@@ -44,6 +44,7 @@ export = class extends Command {
         msg.guild?.channels
           .fetch(msg.channelId)
           .then(a => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             a.bulkDelete(messages)
             msg.channel.send(`채팅 ${limit}개를 청소했어요!`)

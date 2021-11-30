@@ -32,15 +32,16 @@ export default class BanCommand extends Command {
       )
     if (
       !msg.guild?.members
-        ?.fetch(msg.client.user!.id)
+        ?.fetch(msg.client.user?.id as string)
         .then(member => member.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
     )
       return msg.reply('어라..? 일단 이봇에게 멤버 차단하기 권한이 없어요')
-    let mentionMember =
-      msg.mentions.members?.first() || msg.guild!.members.cache.get(Member!)
+    const mentionMember =
+      msg.mentions.members?.first() ||
+      msg.guild?.members.cache.get(Member as string)
     if (!reason) reason = ' 없음'
 
-    if (!mentionMember!.bannable)
+    if (!mentionMember?.bannable)
       return msg.reply('이 사용자는 제가 밴을 못해요...')
 
     try {
@@ -52,7 +53,7 @@ export default class BanCommand extends Command {
         .catch(err =>
           msg.reply(`사용자에게 메세지를 못보냈습니다.\n사유: ${err.message}`)
         )
-      await mentionMember!.ban({ reason })
+      await mentionMember?.ban({ reason })
     } catch (err) {
       return msg.channel.send('이 사용자가 차단이 안되고 있어요...')
     }

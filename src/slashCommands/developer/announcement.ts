@@ -3,6 +3,7 @@ import { CommandInteraction, MessageEmbed, TextChannel } from 'discord.js'
 import { SlashCommandBuilder } from '@discordjs/builders'
 
 export = class extends SlashCommand {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   data = new SlashCommandBuilder()
     .setName('announcement')
@@ -27,7 +28,9 @@ export = class extends SlashCommand {
           embeds: [
             new MessageEmbed()
               .setTitle('공지')
-              .setDescription(interaction.options.getString('content')!)
+              .setDescription(
+                interaction.options.getString('content') as string
+              )
               .setColor(0x459ff7)
               .setTimestamp(Date.now())
               .setFooter(

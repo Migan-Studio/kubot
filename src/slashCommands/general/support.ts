@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { SlashCommand } from 'discommand-slash'
 import { CommandInteraction, Formatters, Team, User } from 'discord.js'
 import { SlashCommandBuilder } from '@discordjs/builders'
@@ -14,12 +15,12 @@ export = class extends SlashCommand {
         .setRequired(true)
     })
   execute(interaction: CommandInteraction) {
-    let content = interaction.options.getString('content')
+    const content = interaction.options.getString('content')
     let user
     if (interaction.client.application?.owner instanceof User) {
       user = interaction.client.application?.owner?.id
       interaction.client.users
-        .fetch(user!)
+        .fetch(user as string)
         .then(user =>
           user.send(
             `새문의가 왔어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
@@ -39,7 +40,7 @@ export = class extends SlashCommand {
     } else if (interaction.client.application?.owner instanceof Team) {
       user = interaction.client.application?.owner?.ownerId
       interaction.client.users
-        .fetch(user!)
+        .fetch(user as string)
         .then(user =>
           user.send(
             `새문의가 왔어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(

@@ -3,6 +3,7 @@ import { CommandInteraction, GuildMember, Permissions } from 'discord.js'
 import { SlashCommandBuilder } from '@discordjs/builders'
 
 export = class extends SlashCommand {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   data = new SlashCommandBuilder()
     .setName('ban')
@@ -36,7 +37,7 @@ export = class extends SlashCommand {
         content: '어라..? 일단 이봇에게 멤버 밴하기 권한이 없어요',
         ephemeral: true,
       })
-    let kickUser = interaction.options.getMentionable('name') as GuildMember
+    const kickUser = interaction.options.getMentionable('name') as GuildMember
     let reason = interaction.options.getString('reason')
     if (!reason) reason = ' 없음'
 
@@ -58,7 +59,7 @@ export = class extends SlashCommand {
             ephemeral: true,
           })
         )
-      await kickUser!.ban({ reason })
+      await kickUser?.ban({ reason })
       await interaction.reply({
         content: '해당유저를 차단했어요!',
         ephemeral: true,

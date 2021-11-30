@@ -14,7 +14,7 @@ export = class extends SlashCommand {
       .setTitle('모듈정보')
       .setTimestamp(Date.now())
       .setFooter(interaction.user.tag, interaction.user.displayAvatarURL())
-    for (let module of Object.entries(modules.dependencies)) {
+    for (const module of Object.entries(modules.dependencies)) {
       Embed.addField(module[0], '`' + remove(module[1]) + '`', true)
     }
     function remove(string: string) {

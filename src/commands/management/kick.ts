@@ -32,11 +32,11 @@ export = class KickCommand extends Command {
       )
     if (!msg.guild?.me?.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
       return msg.reply('어라..? 일단 이봇에게 멤버킥하기 권한이 없어요')
-    let mentionMember =
-      msg.mentions.members?.first() || msg.guild!.members.cache.get(Member)
+    const mentionMember =
+      msg.mentions.members?.first() || msg.guild?.members.cache.get(Member)
     if (!reason) reason = ' 없음'
 
-    if (!mentionMember!.kickable)
+    if (!mentionMember?.kickable)
       return msg.reply('이 사용자는 제가 킥을 못해요...')
 
     try {
@@ -48,7 +48,7 @@ export = class KickCommand extends Command {
         .catch(err =>
           msg.reply(`사용자에게 메세지를 못보냈습니다.\n사유: ${err.message}`)
         )
-      await mentionMember!.kick(reason)
+      await mentionMember?.kick(reason)
     } catch (err) {
       return msg.channel.send('이 사용자가 킥이 안되고 있어요...')
     }

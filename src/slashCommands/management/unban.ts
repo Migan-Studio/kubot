@@ -3,6 +3,7 @@ import { CommandInteraction, Permissions } from 'discord.js'
 import { SlashCommandBuilder } from '@discordjs/builders'
 
 export = class extends SlashCommand {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
   data = new SlashCommandBuilder()
     .setName('unban')
@@ -31,8 +32,8 @@ export = class extends SlashCommand {
         content: '어라..? 일단 이봇에게 멤버 밴하기 권한이 없어요',
         ephemeral: true,
       })
-    interaction
-      .guild!.members.unban(interaction.options.getString('id')!)
+    interaction.guild?.members
+      .unban(interaction.options.getString('id') as string)
       .catch((error: Error) => {
         console.log(error)
       })

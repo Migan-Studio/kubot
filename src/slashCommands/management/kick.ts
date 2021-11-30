@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { SlashCommand } from 'discommand-slash'
 import { CommandInteraction, GuildMember, Permissions } from 'discord.js'
 import { SlashCommandBuilder } from '@discordjs/builders'
@@ -36,7 +37,7 @@ export = class extends SlashCommand {
         content: '어라..? 일단 이봇에게 멤버킥하기 권한이 없어요',
         ephemeral: true,
       })
-    let kickUser = interaction.options.getMentionable('name') as GuildMember
+    const kickUser = interaction.options.getMentionable('name') as GuildMember
     let reason = interaction.options.getString('reason')
     if (!reason) reason = ' 없음'
 
@@ -47,8 +48,8 @@ export = class extends SlashCommand {
       })
 
     try {
-      await kickUser!
-        .send(
+      await kickUser
+        ?.send(
           `${kickUser?.guild.name}에서 추방이 되셨습니다.
 사유: ${reason}`
         )
@@ -58,7 +59,7 @@ export = class extends SlashCommand {
             ephemeral: true,
           })
         )
-      await kickUser!.kick(reason)
+      await kickUser?.kick(reason)
       await interaction.reply({
         content: '해당유저를 추방했어요!',
         ephemeral: true,
