@@ -9,8 +9,10 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   plugins: ['prettier', '@typescript-eslint'],
-  rules: {},
   parserOptions: {
-    parser: '@typescript-eslint/parser', // TS를 ESLint 인식할 수 있는 형태 EStree로 변환
+    parser: '@typescript-eslint/parser',
+  },
+  rules: {
+    '@typescript-eslint/explicit-function-return-type': 0,
   },
 }
