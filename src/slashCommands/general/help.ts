@@ -25,7 +25,7 @@ export = class extends SlashCommand {
 k!, ㅏ!, K!
 
 # 일반
-- 도움말 [help]
+- 도움말 [help, 도움]
 - 문의 [support]
 - 정보 [info, Info]
 
