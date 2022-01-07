@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { SlashCommand } from 'discommand-slash'
-import { CommandInteraction, GuildMember } from 'discord.js'
+import { CommandInteraction, GuildMember, TextChannel } from 'discord.js'
 import { SlashCommandBuilder } from '@discordjs/builders'
 
 export = class extends SlashCommand {
@@ -15,7 +15,9 @@ export = class extends SlashCommand {
         .setRequired(true)
     })
   execute(interaction: CommandInteraction) {
-    const channel = interaction.guild?.channels.cache.get(interaction.channelId)
+    const channel = interaction.guild?.channels.cache.get(
+      interaction.channelId
+    ) as TextChannel
     if (!channel?.isText()) return
     const member = interaction.member as GuildMember
     if (!interaction.guild)
