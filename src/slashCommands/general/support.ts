@@ -19,18 +19,17 @@ export = class extends SlashCommand {
     let user
     if (interaction.client.application?.owner instanceof User) {
       user = interaction.client.application?.owner?.id
-      interaction.client.users
-        .fetch(user as string)
-        .then(user =>
-          user.send(
-            `새문의가 왔어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
-              Math.floor(interaction.createdTimestamp / 1000)
-            )} (${Formatters.time(
-              Math.floor(interaction.createdTimestamp / 1000),
-              'R'
-            )})`
-          )
+      interaction.client.users.fetch(user as string).then(user =>
+        user.send(
+          `새문의가 왔어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
+            Math.floor(interaction.createdTimestamp / 1000)
+          )} (${Formatters.time(
+            Math.floor(interaction.createdTimestamp / 1000),
+            'R'
+          )})
+          문의 작성자: ${interaction.user.tag} (${interaction.user.id})`
         )
+      )
       interaction.reply({
         content: `문의를 성공적으로 보냈어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
           Math.floor(interaction.createdTimestamp / 1000)
@@ -39,18 +38,17 @@ export = class extends SlashCommand {
       })
     } else if (interaction.client.application?.owner instanceof Team) {
       user = interaction.client.application?.owner?.ownerId
-      interaction.client.users
-        .fetch(user as string)
-        .then(user =>
-          user.send(
-            `새문의가 왔어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
-              Math.floor(interaction.createdTimestamp / 1000)
-            )} (${Formatters.time(
-              Math.floor(interaction.createdTimestamp / 1000),
-              'R'
-            )})`
-          )
+      interaction.client.users.fetch(user as string).then(user =>
+        user.send(
+          `새문의가 왔어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
+            Math.floor(interaction.createdTimestamp / 1000)
+          )} (${Formatters.time(
+            Math.floor(interaction.createdTimestamp / 1000),
+            'R'
+          )})
+            문의 작성자: ${interaction.user.tag} (${interaction.user.id})`
         )
+      )
       interaction.reply({
         content: `문의를 성공적으로 보냈어요!\n문의 내용: ${content}\n문의 작성시간: ${Formatters.time(
           Math.floor(interaction.createdTimestamp / 1000)

@@ -27,18 +27,14 @@ export default class SupportCommand extends Command {
     let user
     if (msg.client.application?.owner instanceof User) {
       user = msg.client.application?.owner?.id
-      msg.client.users
-        .fetch(user as string)
-        .then(user =>
-          user.send(
-            `새문의가 왔어요!\n문의 내용: ${a}\n문의 작성시간: ${Formatters.time(
-              Math.floor(msg.createdTimestamp / 1000)
-            )} (${Formatters.time(
-              Math.floor(msg.createdTimestamp / 1000),
-              'R'
-            )})`
-          )
+      msg.client.users.fetch(user as string).then(user =>
+        user.send(
+          `새문의가 왔어요!\n문의 내용: ${a}\n문의 작성시간: ${Formatters.time(
+            Math.floor(msg.createdTimestamp / 1000)
+          )} (${Formatters.time(Math.floor(msg.createdTimestamp / 1000), 'R')})
+            문의 작성자: ${msg.author.tag} (${msg.author.id})`
         )
+      )
       msg.reply(
         `문의를 성공적으로 보냈어요!\n문의 내용: ${a}\n문의 작성시간: ${Formatters.time(
           Math.floor(msg.createdTimestamp / 1000)
@@ -46,18 +42,14 @@ export default class SupportCommand extends Command {
       )
     } else if (msg.client.application?.owner instanceof Team) {
       user = msg.client.application?.owner?.ownerId
-      msg.client.users
-        .fetch(user as string)
-        .then(user =>
-          user.send(
-            `새문의가 왔어요!\n문의 내용: ${a}\n문의 작성시간: ${Formatters.time(
-              Math.floor(msg.createdTimestamp / 1000)
-            )} (${Formatters.time(
-              Math.floor(msg.createdTimestamp / 1000),
-              'R'
-            )})`
-          )
+      msg.client.users.fetch(user as string).then(user =>
+        user.send(
+          `새문의가 왔어요!\n문의 내용: ${a}\n문의 작성시간: ${Formatters.time(
+            Math.floor(msg.createdTimestamp / 1000)
+          )} (${Formatters.time(Math.floor(msg.createdTimestamp / 1000), 'R')})
+            문의 작성자: ${msg.author.tag} (${msg.author.id})`
         )
+      )
       msg.reply(
         `문의를 성공적으로 보냈어요!\n문의 내용: ${a}\n문의 작성시간: ${Formatters.time(
           Math.floor(msg.createdTimestamp / 1000)
