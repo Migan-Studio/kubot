@@ -1,5 +1,4 @@
-FROM node:16.13.0
-
+FROM node:17.4.0
 RUN mkdir app
 WORKDIR /app
 COPY . .

@@ -30,6 +30,6 @@
     "start": "node dist/src"
   },
   "engines": {
-    "node": "16.13.0"
+    "node": "17.4.0"
   }
 }
