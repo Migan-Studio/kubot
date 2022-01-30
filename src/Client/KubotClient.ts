@@ -74,7 +74,7 @@ export default class KubotClient extends AkairoClient {
     this.app.get('/', (req, res) => {
       res.send('Kubot!')
     })
-    this.app.listen(5000, () => console.log(`5000 port.`))
+    this.app.listen(process.env.PORT || 5000, () => console.log(`5000 port.`))
   }
 
   public getOwner() {
