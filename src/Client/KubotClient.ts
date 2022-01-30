@@ -1,10 +1,10 @@
-import dotenv from 'dotenv'
 import { AkairoClient, CommandHandler, ListenerHandler } from 'discord-akairo'
 import { Intents, IntentsString, User } from 'discord.js'
 import path = require('path')
 import Dokdo from 'dokdo'
 import { Slash } from 'discommand-slash'
-dotenv.config()
+import config from '../../config.json'
+import express from 'express'
 
 declare module 'discord-akairo' {
   interface AkairoClient {
@@ -29,7 +29,7 @@ export default class KubotClient extends AkairoClient {
   constructor() {
     super(
       {
-        ownerID: JSON.parse(process.env.OWNER_ID as string),
+        ownerID: config.bot.owner_id,
       },
       {
         intents: Object.keys(Intents.FLAGS) as IntentsString[],
@@ -37,9 +37,11 @@ export default class KubotClient extends AkairoClient {
     )
   }
 
+  private app: express.Application = express()
+
   public commandHandler: CommandHandler = new CommandHandler(this, {
     directory: path.join(__dirname, '..', 'commands'),
-    prefix: JSON.parse(process.env.BOT_PREFIX as string),
+    prefix: config.bot.prefix,
     commandUtil: true,
     automateCategories: true,
     handleEdits: true,
@@ -55,7 +57,7 @@ export default class KubotClient extends AkairoClient {
     path: path.join(__dirname, '..', 'slashCommands'),
   })
   public dokdo = new Dokdo(this, {
-    prefix: JSON.parse(process.env.BOT_PREFIX as string)[0],
+    prefix: config.bot.prefix[0],
     noPerm: msg => {
       msg.react('❌')
       msg.reply('어라...? 일단 권한이...')
@@ -67,7 +69,12 @@ export default class KubotClient extends AkairoClient {
     this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
     this.slash.LoadCommand()
-    this.login(process.env.TOKEN)
+    this.login(config.api.discord)
+
+    this.app.get('/', (req, res) => {
+      res.send('Kubot!')
+    })
+    this.app.listen(5000, () => console.log(`5000 port.`))
   }
 
   public getOwner() {

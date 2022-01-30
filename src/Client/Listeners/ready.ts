@@ -1,5 +1,6 @@
 import { Listener } from 'discord-akairo'
 import { Koreanbots } from 'koreanbots'
+import config from '../../../config.json'
 
 export default class Ready extends Listener {
   constructor() {
@@ -12,12 +13,12 @@ export default class Ready extends Listener {
   exec() {
     console.log(`Login: ${this.client.user?.username}`)
     console.log('======================================')
-    if (this.client.user?.id === '889040508473724958') {
-      console.log('this is Test bot.')
+    if (!config.api.koreanbots) {
+      console.log('koreanbots token is null.')
     } else {
       const koreanbots = new Koreanbots({
         api: {
-          token: process.env.KR_TOKEN as string,
+          token: config.api.koreanbots as string,
         },
         clientID: this.client.user?.id as string,
       })

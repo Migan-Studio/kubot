@@ -1,0 +1,10 @@
+{
+  "api": {
+    "discord": "",
+    "koreanbots": ""
+  },
+  "bot": {
+    "prefix": "",
+    "owner_id": ""
+  }
+}

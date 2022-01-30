@@ -1,6 +1,6 @@
 .vscode/
 .idea/
 .git/
-.env
 update.sh
 node_modules/
+.eslint*
