@@ -58,9 +58,9 @@ export default class KubotClient extends AkairoClient {
   })
   public dokdo = new Dokdo(this, {
     prefix: config.bot.prefix[0],
-    noPerm: msg => {
-      msg.react('❌')
-      msg.reply('어라...? 일단 권한이...')
+    noPerm: async msg => {
+      await msg.react('❌')
+      await msg.reply('어라...? 일단 권한이...')
     },
     globalVariable: { slash: this.slash },
   })
@@ -69,7 +69,7 @@ export default class KubotClient extends AkairoClient {
     this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
     this.slash.LoadCommand()
-    this.login(config.api.discord)
+    await this.login(config.api.discord)
 
     this.app.get('/', (req, res) => {
       res.send('Kubot!')
@@ -78,13 +78,14 @@ export default class KubotClient extends AkairoClient {
   }
 
   public getOwner() {
+    let user
     if (Array.isArray(this.ownerID)) {
       for (const id of this.ownerID) {
-        const user = this.users.cache.get(id)
+        user = this.users.cache.get(id)
         return user
       }
     } else if (!Array.isArray(this.ownerID)) {
-      const user = this.users.cache.get(this.ownerID)
+      user = this.users.cache.get(this.ownerID)
       return user
     }
   }
