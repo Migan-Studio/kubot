@@ -25,20 +25,6 @@ export = class extends SlashCommand {
         embed.setDescription(
           Formatters.codeBlock(
             'markdown',
-            `# 인터렉션 핑
-측정중...
-    
-# 웹소켓 핑
-측정중...`
-          )
-        ),
-      ],
-    })
-    interaction.editReply({
-      embeds: [
-        embed.setDescription(
-          Formatters.codeBlock(
-            'markdown',
             `# 웹소켓 핑
 ${interaction.client.ws.ping}`
           )
