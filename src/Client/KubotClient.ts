@@ -33,6 +33,9 @@ export default class KubotClient extends AkairoClient {
       },
       {
         intents: Object.keys(Intents.FLAGS) as IntentsString[],
+        allowedMentions: {
+          repliedUser: false,
+        },
       }
     )
   }
