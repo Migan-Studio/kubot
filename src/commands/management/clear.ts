@@ -31,9 +31,9 @@ export = class extends Command {
       return msg.reply({
         content: '100까지만 가능해요.',
       })
-    if (Number(limit) < 0)
+    if (Number(limit) < 1)
       return msg.reply({
-        content: '0위로 해주셔야 해요',
+        content: '1이상으로 해주셔야 해요',
       })
     if (isNaN(Number(limit)))
       return msg.reply('지울 메세지의 갯수는 숫자여야해요!')

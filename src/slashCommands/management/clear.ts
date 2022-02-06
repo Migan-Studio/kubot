@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { SlashCommand } from 'discommand-slash'
 import { CommandInteraction, Permissions } from 'discord.js'
 import { SlashCommandBuilder } from '@discordjs/builders'
@@ -36,7 +35,7 @@ export = class extends SlashCommand {
         content: '100까지만 가능해요.',
         ephemeral: true,
       })
-    if ((interaction.options.getNumber('limit') as number) < 0)
+    if ((interaction.options.getNumber('limit') as number) < 1)
       return interaction.reply({
         content: '0위로 해주셔야 해요',
         ephemeral: true,

@@ -10,7 +10,7 @@ import {
 export default class HelpCommand extends Command {
   constructor() {
     super('help', {
-      aliases: ['help', '도움말', '도움'],
+      aliases: ['help', '도움말', '도움', '명령어'],
     })
   }
   exec(msg: Message) {
@@ -26,7 +26,7 @@ export default class HelpCommand extends Command {
 k!, ㅏ!, K!
 
 # 일반
-- 도움말 [help, 도움]
+- 도움말 [help, 도움, 명령어]
 - 문의 [support]
 - 정보 [info, Info]
 
