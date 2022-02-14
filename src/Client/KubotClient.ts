@@ -4,7 +4,6 @@ import path = require('path')
 import Dokdo from 'dokdo'
 import { Slash } from 'discommand-slash'
 import config from '../../config.json'
-import express from 'express'
 
 declare module 'discord-akairo' {
   interface AkairoClient {
@@ -40,8 +39,6 @@ export default class KubotClient extends AkairoClient {
     )
   }
 
-  private app: express.Application = express()
-
   public commandHandler: CommandHandler = new CommandHandler(this, {
     directory: path.join(__dirname, '..', 'commands'),
     prefix: config.bot.prefix,
@@ -73,11 +70,6 @@ export default class KubotClient extends AkairoClient {
     this.listenerHandler.loadAll()
     this.slash.LoadCommand()
     await this.login(config.api.discord)
-
-    this.app.get('/', (req, res) => {
-      res.send('Kubot!')
-    })
-    this.app.listen(process.env.PORT || 5000, () => console.log(`5000 port.`))
   }
 
   public getOwner() {
