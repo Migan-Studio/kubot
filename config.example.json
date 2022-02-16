@@ -4,7 +4,6 @@
     "koreanbots": "your_bots_koreanbots_token"
   },
   "bot": {
-    "prefix": "your_bot_prefix",
     "owner_id": "your_id"
   }
 }
