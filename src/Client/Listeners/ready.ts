@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { Listener } from 'discord-akairo'
 import { Koreanbots } from 'koreanbots'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const config = require('../../config.json')
 
-const token = process.env.KRBotsToken || config.bot.KRBotsToken
+const token =
+  process.env.KRBOTS_TOKEN || require('../../config.json').api.koreanbots
 
 export default class Ready extends Listener {
   constructor() {
@@ -16,12 +17,12 @@ export default class Ready extends Listener {
   exec() {
     console.log(`Login: ${this.client.user?.username}`)
     console.log('======================================')
-    if (!config.api.koreanbots) {
+    if (!token) {
       console.log('koreanbots token is null.')
     } else {
       const koreanbots = new Koreanbots({
         api: {
-          token: token as string,
+          token,
         },
         clientID: this.client.user?.id as string,
       })

@@ -1,11 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { AkairoClient, CommandHandler, ListenerHandler } from 'discord-akairo'
 import { Intents, IntentsString, User } from 'discord.js'
 import path = require('path')
 import Dokdo from 'dokdo'
 import { Slash } from 'discommand-slash'
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const config = require('../../config.json')
 
 declare module 'discord-akairo' {
   interface AkairoClient {
@@ -31,7 +29,8 @@ export default class KubotClient extends AkairoClient {
     super(
       {
         ownerID:
-          JSON.parse(process.env.OWNER_ID as string) || config.bot.owner_id,
+          JSON.parse(process.env.OWNER_ID as string) ||
+          require('../../config.json').bot.owner_id,
       },
       {
         intents: Object.keys(Intents.FLAGS) as IntentsString[],
@@ -44,7 +43,9 @@ export default class KubotClient extends AkairoClient {
 
   public commandHandler: CommandHandler = new CommandHandler(this, {
     directory: path.join(__dirname, '..', 'commands'),
-    prefix: JSON.parse(process.env.BOT_PREFIX as string) || config.bot.prefix,
+    prefix:
+      JSON.parse(process.env.BOT_PREFIX as string) ||
+      require('../../config.json').bot.prefix,
     commandUtil: true,
     automateCategories: true,
     handleEdits: true,
@@ -61,7 +62,8 @@ export default class KubotClient extends AkairoClient {
   })
   public dokdo = new Dokdo(this, {
     prefix:
-      JSON.parse(process.env.BOT_PREFIX as string)[0] || config.bot.prefix[0],
+      JSON.parse(process.env.BOT_PREFIX as string)[0] ||
+      require('../../config.json').bot.prefix[0],
     noPerm: async msg => {
       await msg.react('❌')
       await msg.reply('어라...? 일단 권한이...')
@@ -73,7 +75,9 @@ export default class KubotClient extends AkairoClient {
     this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
     this.slash.LoadCommand()
-    await this.login(process.env.TOKEN || config.api.discord)
+    await this.login(
+      process.env.TOKEN || require('../../config.json').api.discord
+    )
   }
 
   public getOwner() {
