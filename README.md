@@ -14,7 +14,7 @@
 
 #### 준비
 
-nodejs 16.6.x 이상 필수.
+nodejs 16.6.x 이상이 필요하며 yarn도 필요합니다.
 
 ##### 모듈 설치
 
@@ -24,10 +24,14 @@ nodejs 16.6.x 이상 필수.
 yarn
 ```
 
+yarn을 입력하여 자동 모듈 설치를 합니다.
+
 ##### config.json 설정
 
 1. config.example.json 에 있는 내용을 config.json 에 복사 하세요.
 2. 각 항목에 알맞게 넣어줍니다.
+
+koreanbots 토큰이 없을시 그 항목을 완전히 삭제 해주세요.
 
 ##### 실행
 
