@@ -1,10 +1,5 @@
 import { SlashCommand } from 'discommand-slash'
-import {
-  CommandInteraction,
-  MessageEmbed,
-  Formatters,
-  Interaction,
-} from 'discord.js'
+import { CommandInteraction, MessageEmbed, Formatters } from 'discord.js'
 import { SlashCommandBuilder } from '@discordjs/builders'
 
 export = class extends SlashCommand {
@@ -16,10 +11,10 @@ export = class extends SlashCommand {
       .setColor(0x459ff7)
       .setTitle('퐁!')
       .setTimestamp(Date.now())
-      .setFooter(
-        interaction.user.tag,
-        interaction.user.displayAvatarURL({ dynamic: true, size: 512 })
-      )
+      .setAuthor({
+        name: interaction.user.tag,
+        iconURL: interaction.user.displayAvatarURL(),
+      })
     interaction.reply({
       embeds: [
         embed.setDescription(

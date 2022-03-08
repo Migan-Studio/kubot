@@ -14,14 +14,11 @@ export = class extends SlashCommand {
     .setName('profile')
     .setDescription('당신이나 지목한 유저의 정보를 반환합니다.')
     .addMentionableOption(option => {
-      return option
-        .setName('name')
-        .setDescription('유저의 이름')
-        .setRequired(false)
+      return option.setName('name').setDescription('유저').setRequired(false)
     })
 
   execute(interaction: CommandInteraction) {
-    function a(a: boolean) {
+    function isBot(a: boolean) {
       if (!a) {
         return '봇이 아니에요'
       } else if (a) {
@@ -29,7 +26,7 @@ export = class extends SlashCommand {
       }
     }
 
-    function b(status: GuildMember) {
+    function Presence(status: GuildMember) {
       if (!status.presence?.status) {
         return '없음'
       } else {
@@ -46,7 +43,7 @@ export = class extends SlashCommand {
       }
     }
 
-    function c(c: string) {
+    function NickName(c: string) {
       if (c === null || c === undefined) {
         return '없음'
       } else {
@@ -59,6 +56,10 @@ export = class extends SlashCommand {
     interaction.reply({
       embeds: [
         new MessageEmbed()
+          .setAuthor({
+            name: interaction.user.tag,
+            iconURL: interaction.user.displayAvatarURL(),
+          })
           .setColor(0x459ff7)
           .setTitle(`${user?.user.username}님의 정보`)
           .setThumbnail(
@@ -74,13 +75,13 @@ ${user?.user.username}
 ${user?.user.discriminator}
 
 # 상태
-${b(user as GuildMember)}
+${Presence(user as GuildMember)}
 
 # 봇여부
-${a(user?.user.bot)}
+${isBot(user?.user.bot)}
 
 # 닉네임
-${c(user?.nickname as string)}
+${NickName(user?.nickname as string)}
 
 # 계정 생성일
 ${user?.user.createdAt.toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })}
@@ -89,11 +90,7 @@ ${user?.user.createdAt.toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })}
 ${user?.joinedAt?.toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })}`
             )
           )
-          .setTimestamp(Date.now())
-          .setFooter(
-            interaction.user.tag,
-            interaction.user.displayAvatarURL({ dynamic: true, size: 512 })
-          ),
+          .setTimestamp(Date.now()),
       ],
     })
   }

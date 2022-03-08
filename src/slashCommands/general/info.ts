@@ -13,7 +13,10 @@ export = class extends SlashCommand {
     const Embed = new MessageEmbed()
       .setTitle('모듈정보')
       .setTimestamp(Date.now())
-      .setFooter(interaction.user.tag, interaction.user.displayAvatarURL())
+      .setAuthor({
+        name: interaction.user.tag,
+        iconURL: interaction.user.displayAvatarURL(),
+      })
     for (const module of Object.entries(modules.dependencies)) {
       Embed.addField(module[0], '`' + remove(module[1]) + '`', true)
     }
@@ -55,10 +58,10 @@ ${process.pid}`
                 )
               )
               .setTimestamp(Date.now())
-              .setFooter(
-                interaction.user.tag,
-                interaction.user.displayAvatarURL()
-              ),
+              .setAuthor({
+                name: interaction.user.tag,
+                iconURL: interaction.user.displayAvatarURL(),
+              }),
           ],
         },
       ],

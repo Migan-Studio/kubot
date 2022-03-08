@@ -21,10 +21,7 @@ export = class extends SlashCommand {
           .setDescription(
             Formatters.codeBlock(
               'markdown',
-              `# 접두사
-k!, ㅏ!, K!
-
-# 일반
+              `# 일반
 - 도움말 [help, 도움]
 - 문의 [support]
 - 정보 [info, Info]
@@ -45,10 +42,10 @@ k!, ㅏ!, K!
             interaction.user.displayAvatarURL({ dynamic: true, size: 512 })
           )
           .setTimestamp(Date.now())
-          .setFooter(
-            interaction.user.tag,
-            interaction.user.displayAvatarURL({ dynamic: true, size: 512 })
-          ),
+          .setAuthor({
+            name: interaction.user.tag,
+            iconURL: interaction.user.displayAvatarURL(),
+          }),
       ],
       components: [
         new MessageActionRow()
@@ -65,7 +62,7 @@ k!, ㅏ!, K!
             new MessageButton()
               .setLabel('봇 소스코드')
               .setStyle('LINK')
-              .setURL('https://github.com/Migan178/kubot')
+              .setURL('https://github.com/Migan-Studio/kubot')
               .setEmoji('🔗')
           )
           .addComponents(

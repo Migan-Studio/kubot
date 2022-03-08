@@ -4,7 +4,7 @@ import { Koreanbots } from 'koreanbots'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 
 const token =
-  process.env.KRBOTS_TOKEN || require('../../config.json').api.koreanbots
+  process.env.KRBOTS_TOKEN || require('../../../config.json').api.koreanbots
 
 export default class Ready extends Listener {
   constructor() {
@@ -49,7 +49,6 @@ export default class Ready extends Listener {
         600000
       )
     }
-    const prefix = this.client.commandHandler.prefix as string[]
-    this.client.user?.setActivity(`${prefix[0]}도움말`, { type: 'WATCHING' })
+    this.client.user?.setActivity(`/help`, { type: 'WATCHING' })
   }
 }

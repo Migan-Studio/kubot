@@ -15,7 +15,7 @@ export = class extends SlashCommand {
         .setRequired(true)
     })
   execute(interaction: CommandInteraction) {
-    if (interaction.user.id !== interaction.client.getOwner()?.id)
+    if (interaction.user.id !== interaction.client.ownerID)
       return interaction.reply({
         content: '이 명령어는 봇 개발자 전용이에요',
         ephemeral: true,
