@@ -3,7 +3,9 @@ import { Intents, IntentsString, User } from 'discord.js'
 import path = require('path')
 import Dokdo from 'dokdo'
 import { Slash } from 'discommand-slash'
-import config from '../../config.json'
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const config = require('../../config.json')
 
 declare module 'discord-akairo' {
   interface AkairoClient {
@@ -28,7 +30,8 @@ export default class KubotClient extends AkairoClient {
   constructor() {
     super(
       {
-        ownerID: config.bot.owner_id,
+        ownerID:
+          JSON.parse(process.env.OWNER_ID as string) || config.bot.owner_id,
       },
       {
         intents: Object.keys(Intents.FLAGS) as IntentsString[],
@@ -41,7 +44,7 @@ export default class KubotClient extends AkairoClient {
 
   public commandHandler: CommandHandler = new CommandHandler(this, {
     directory: path.join(__dirname, '..', 'commands'),
-    prefix: config.bot.prefix,
+    prefix: JSON.parse(process.env.BOT_PREFIX as string) || config.bot.prefix,
     commandUtil: true,
     automateCategories: true,
     handleEdits: true,
@@ -57,7 +60,8 @@ export default class KubotClient extends AkairoClient {
     path: path.join(__dirname, '..', 'slashCommands'),
   })
   public dokdo = new Dokdo(this, {
-    prefix: config.bot.prefix[0],
+    prefix:
+      JSON.parse(process.env.BOT_PREFIX as string)[0] || config.bot.prefix[0],
     noPerm: async msg => {
       await msg.react('❌')
       await msg.reply('어라...? 일단 권한이...')

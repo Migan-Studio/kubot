@@ -14,6 +14,6 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/explicit': 'off',
-    '@typescript-eslint/ban-ts-comment': 'off'
+    '@typescript-eslint/ban-ts-comment': 'off',
   },
 }
