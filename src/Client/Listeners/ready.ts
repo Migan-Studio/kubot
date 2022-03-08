@@ -1,6 +1,9 @@
 import { Listener } from 'discord-akairo'
 import { Koreanbots } from 'koreanbots'
-import config from '../../../config.json'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const config = require('../../config.json')
+
+const token = process.env.KRBotsToken || config.bot.KRBotsToken
 
 export default class Ready extends Listener {
   constructor() {
@@ -18,7 +21,7 @@ export default class Ready extends Listener {
     } else {
       const koreanbots = new Koreanbots({
         api: {
-          token: config.api.koreanbots as string,
+          token: token as string,
         },
         clientID: this.client.user?.id as string,
       })

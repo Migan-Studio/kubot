@@ -73,7 +73,7 @@ export default class KubotClient extends AkairoClient {
     this.commandHandler.loadAll()
     this.listenerHandler.loadAll()
     this.slash.LoadCommand()
-    await this.login(config.api.discord)
+    await this.login(process.env.TOKEN || config.api.discord)
   }
 
   public getOwner() {
