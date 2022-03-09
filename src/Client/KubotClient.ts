@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { AkairoClient, ListenerHandler } from 'discord-akairo'
-import { Intents, IntentsString, User } from 'discord.js'
+import { Intents, IntentsString } from 'discord.js'
 import path = require('path')
 import Dokdo from 'dokdo'
 import { Slash } from 'discommand-slash'
@@ -10,7 +10,6 @@ declare module 'discord-akairo' {
     dokdo: Dokdo
     listenerHandler: ListenerHandler
     slash: Slash
-    getOwner(): User | undefined
   }
 }
 
@@ -42,7 +41,7 @@ export default class KubotClient extends AkairoClient {
 
   public slash = new Slash(this, {
     loadType: 'FOLDER',
-    path: path.join(__dirname, '..', 'slashCommands'),
+    path: path.join(__dirname, '..', 'Commands'),
   })
   public dokdo = new Dokdo(this, {
     prefix: '!',
@@ -56,8 +55,6 @@ export default class KubotClient extends AkairoClient {
   public async start() {
     this.listenerHandler.loadAll()
     this.slash.LoadCommand()
-    await this.login(
-      process.env.TOKEN || require('../../config.json').api.discord
-    )
+    this.login(process.env.TOKEN || require('../../config.json').api.discord)
   }
 }

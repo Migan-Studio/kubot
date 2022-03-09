@@ -1,5 +1,11 @@
 import { SlashCommand } from 'discommand-slash'
-import { CommandInteraction, Formatters, MessageEmbed } from 'discord.js'
+import {
+  CommandInteraction,
+  Formatters,
+  MessageEmbed,
+  Team,
+  User,
+} from 'discord.js'
 import { SlashCommandBuilder } from '@discordjs/builders'
 import { ButtonPaginator } from 'djs-interaction-util'
 import os from 'os'
@@ -10,6 +16,14 @@ export = class extends SlashCommand {
     .setName('info')
     .setDescription('이 봇의 정보를 반환합니다.')
   execute(interaction: CommandInteraction) {
+    function getOwnerID() {
+      if (interaction.client.application?.owner instanceof Team) {
+        return interaction.client.application!.owner!.ownerId!
+      } else if (interaction.client.application?.owner instanceof User) {
+        return interaction.client.application!.owner!.id!
+      }
+    }
+
     const Embed = new MessageEmbed()
       .setTitle('모듈정보')
       .setTimestamp(Date.now())
@@ -39,7 +53,7 @@ export = class extends SlashCommand {
 k!, ㅏ!, K!
 
 # 봇 개발자
-${interaction.client.getOwner()?.tag}
+${interaction.client.users.cache.get(getOwnerID()!)?.tag}
 
 # Node.js 버전
 ${process.version}

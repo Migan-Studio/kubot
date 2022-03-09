@@ -3,7 +3,6 @@ import { CommandInteraction, MessageEmbed, TextChannel } from 'discord.js'
 import { SlashCommandBuilder } from '@discordjs/builders'
 
 export = class extends SlashCommand {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   data = new SlashCommandBuilder()
     .setName('announcement')

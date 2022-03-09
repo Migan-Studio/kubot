@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { Listener } from 'discord-akairo'
 import { Koreanbots } from 'koreanbots'
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 
 const token =
   process.env.KRBOTS_TOKEN || require('../../../config.json').api.koreanbots
