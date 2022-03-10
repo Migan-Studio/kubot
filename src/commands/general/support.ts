@@ -32,7 +32,7 @@ export default class SupportCommand extends Command {
           `새문의가 왔어요!\n문의 내용: ${a}\n문의 작성시간: ${Formatters.time(
             Math.floor(msg.createdTimestamp / 1000)
           )} (${Formatters.time(Math.floor(msg.createdTimestamp / 1000), 'R')})
-            문의 작성자: ${msg.author.tag} (${msg.author.id})`
+문의 작성자: ${msg.author.tag} (${msg.author.id})`
         )
       )
       msg.reply(
@@ -47,7 +47,7 @@ export default class SupportCommand extends Command {
           `새문의가 왔어요!\n문의 내용: ${a}\n문의 작성시간: ${Formatters.time(
             Math.floor(msg.createdTimestamp / 1000)
           )} (${Formatters.time(Math.floor(msg.createdTimestamp / 1000), 'R')})
-            문의 작성자: ${msg.author.tag} (${msg.author.id})`
+문의 작성자: ${msg.author.tag} (${msg.author.id})`
         )
       )
       msg.reply(

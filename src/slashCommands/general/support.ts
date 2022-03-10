@@ -27,7 +27,7 @@ export = class extends SlashCommand {
             Math.floor(interaction.createdTimestamp / 1000),
             'R'
           )})
-          문의 작성자: ${interaction.user.tag} (${interaction.user.id})`
+문의 작성자: ${interaction.user.tag} (${interaction.user.id})`
         )
       )
       interaction.reply({
@@ -46,7 +46,7 @@ export = class extends SlashCommand {
             Math.floor(interaction.createdTimestamp / 1000),
             'R'
           )})
-            문의 작성자: ${interaction.user.tag} (${interaction.user.id})`
+문의 작성자: ${interaction.user.tag} (${interaction.user.id})`
         )
       )
       interaction.reply({

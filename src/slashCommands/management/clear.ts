@@ -48,7 +48,7 @@ export = class extends SlashCommand {
       .then(messages => {
         interaction.guild?.channels.fetch(interaction.channelId).then(a => {
           // @ts-ignore
-          a.bulkDelete(messages)
+          a.bulkDelete(messages, true)
           interaction.reply(
             `채팅 ${interaction.options.getNumber('limit')}개를 청소했어요!`
           )
